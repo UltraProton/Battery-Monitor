@@ -145,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
         public long getItemId(int position) {
             return position;
         }
-        //We need to overload be
+
+        //We need to overload the getViewTypeCount() and getItemViewType() to remove the multiple
+        //colors in multiple item in the list view
         @Override
         public int getViewTypeCount() {
             return getCount();
