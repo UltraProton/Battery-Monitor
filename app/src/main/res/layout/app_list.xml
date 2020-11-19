@@ -5,26 +5,29 @@
     android:orientation="vertical"
     android:id="@+id/layout"
     android:padding="16dp">
+
     <LinearLayout
+        android:id="@+id/list_item_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
 
+        android:orientation="horizontal"
         android:padding="5dp">
+
         <ImageView
             android:id="@+id/app_icon"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="254dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
-                android:id="@+id/list_app_name"
+                android:id="@+id/app_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="App Name"
@@ -33,26 +36,25 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/app_package"
+                android:id="@+id/app_package_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:text="App Package Name" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/drain"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="drain percentage:" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/drain"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="drain percentage:" />-->
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/appicon"
+            android:id="@+id/extra_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Extra text"
-         />
+            android:text="Extra text" />
 
     </LinearLayout>
 
