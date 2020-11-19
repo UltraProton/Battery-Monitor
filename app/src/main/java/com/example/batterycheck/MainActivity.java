@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.BatteryManager;
 import android.os.Bundle;
@@ -160,8 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            int mColor= 0xFF000000;
-//            GradientDrawable gradientDrawable = (GradientDrawable) convertView.getBackground();
+            //int mColor= 0xFF000000;
             ViewHolder listViewHolder;
             if(convertView == null){
                 listViewHolder = new ViewHolder();
@@ -182,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
 
             if(x.equals("Asynctask"))
             {
-                listViewHolder.layout.setBackgroundColor(mColor);
+                //listViewHolder.layout.setBackgroundColor();
+                listViewHolder.layout.setBackgroundColor(Color.parseColor("#EF5350"));
             }
             //Log.i("itemmm",""+getItem(position).toString());
             //if(getItem(position))
