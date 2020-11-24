@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -30,13 +33,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    String TAG = "Boom Boom";
+    String TAG = "Boom";
     ArrayList<app_data> apps_list;
     MyAdapter myAdapter;
     RecyclerView recyclerView;
     ListView power_apps_view;
     List<ActivityManager.RunningAppProcessInfo> processes;
     ActivityManager amg;
+
+    TextView battery_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
         //Set which layout you want to see in the recycler view
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        battery_txt = (TextView) findViewById(R.id.battery_lvl);
+        this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(MainActivity.this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
+
                 TextView app_name = (TextView) findViewById(R.id.app_name);
                 Log.i("App name: ",""+apps_list.get(position).name);
 
@@ -99,7 +107,15 @@ public class MainActivity extends AppCompatActivity {
         }));
 
     }
-
+    private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context,Intent intent) {
+            int bat_level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+            int bat = intent.getIntExtra(BatteryManager.ACTION_CHARGING, 0);
+            //            Toast.makeText(getApplicationContext(), "Batt"+bat_level, Toast.LENGTH_LONG).show();
+            battery_txt.setText("Batktery level: "+String.valueOf(bat_level) + String.valueOf(bat));
+        }
+    };
 
     public class app_data {
         private String name;
