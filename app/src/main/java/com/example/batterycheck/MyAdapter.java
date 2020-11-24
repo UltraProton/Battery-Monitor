@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyOwnHolder> {
             holder.app_package_name.setText(apps_list.get(position).getPackages());
             holder.extra_text.setText(apps_list.get(position).getName());
             holder.app_icon.setImageDrawable(apps_list.get(position).icon);
+            //Change the color accordingly
+            if(apps_list.get(position).getName().equals("ServicesDemo")){
+                holder.itemView.setBackgroundColor(Color.parseColor("#EF5350"));
+            }
+
+
         }
     }
 
